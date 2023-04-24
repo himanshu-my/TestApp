@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MindBodyTest</string>
+    <string name="internet_validation_msg">Please connect to internet</string>
+    <string name="back_button">Back Button</string>
+    <string name="oops_text">Oops!!</string>
+    <string name="no_internet_message_text">Unable to connect to internet</string>
+    <string name="error_view_retry">Retry</string>
+    <string name="generic_error_msg">Some thing went wrong, please try again</string>
+    <string name="no_data_msg">No data found, please try again later!</string>
+</resources>

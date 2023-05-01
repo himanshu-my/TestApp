@@ -12,6 +12,7 @@ import com.androidvibes.mindbodytest.data.models.Country
 import com.androidvibes.mindbodytest.data.models.Provinces
 import com.androidvibes.mindbodytest.data.repository.CommonRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -50,7 +51,7 @@ class CountryViewModel @Inject constructor(
         }
     }
 
-    fun fetchCountries() = viewModelScope.launch {
+    fun fetchCountries() = viewModelScope.launch(Dispatchers.IO) {
         when (val result = mainRepository.getCountries()) {
             is NetworkResult.Success -> {
                 result.data?.let {
@@ -72,7 +73,7 @@ class CountryViewModel @Inject constructor(
 
     }
 
-    fun fetchProvinces(countryCode: String) = viewModelScope.launch {
+    fun fetchProvinces(countryCode: String) = viewModelScope.launch(Dispatchers.IO) {
         _uiState.value = ApiCallStates.InProgress
         when (val result = mainRepository.getProvinces(countryCode)) {
             is NetworkResult.Success -> {
